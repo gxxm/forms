@@ -1,0 +1,39 @@
+{{<layout}}
+
+  {{$journeyHeader}}
+    {{#t}}journeys.terrorism_reporting.details-header{{/t}}
+  {{/journeyHeader}}
+
+  {{$validationSummary}}
+    {{> partials-validation-summary}}
+  {{/validationSummary}}
+
+  {{$propositionHeader}}
+    {{> partials-navigation}}
+  {{/propositionHeader}}
+
+  {{$header}}{{#t}}journeys.terrorism_reporting.details-header{{/t}}{{/header}}
+  
+  {{$content}}
+  {{^additional-report}}
+  <p class="panel-indent">{{#t}}pages.terrorism_reporting.cta-999{{/t}}</p>
+  <p>{{#t}}pages.terrorism_reporting.advice-additional-reports{{/t}}</p>
+  {{/additional-report}}
+  
+  {{#additional-report}}
+  {{> partials-additional-report-header}}
+  {{/additional-report}}
+  
+  {{<partials-form}}
+       
+     {{$form}}
+       {{> partials-rtm-report-form}}
+       {{#input-submit}}next{{/input-submit}}
+     {{/form}}
+    
+    {{/partials-form}}
+    
+  {{/content}}
+    
+{{/layout}}
+    
