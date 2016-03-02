@@ -1,14 +1,13 @@
 'use strict';
 
-var hof = require('hof');
-var wizard = hof.wizard;
-var mixins = hof.mixins;
-var i18nFuture = hof.i18n;
-var router = require('express').Router();
-var path = require('path');
-var _ = require('underscore');
+const wizard = require('hmpo-form-wizard');
+const mixins = require('hmpo-template-mixins');
+const i18nFuture = require('i18n-future');
+const router = require('express').Router();
+const path = require('path');
+const _ = require('lodash');
 
-var fields = _.extend({}, require('../common/fields/'), require('./fields/'));
+var fields = _.extend({}, require('./fields/'));
 var i18n = i18nFuture({
   path: path.resolve(__dirname, './translations/__lng__/__ns__.json')
 });

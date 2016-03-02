@@ -63,7 +63,7 @@ module.exports = {
     next: '/confirmation'
   },
   '/reset': {
-    template: '../../common/views/reset.html',
+    template: '../../lib/views/reset.html',
     controller: require('./controllers/reset'),
     backLink: '/confirmation',
     next: '/confirmation'

@@ -1,22 +1,21 @@
 'use strict';
 
-var express = require('express');
-var app = express();
-var path = require('path');
-var logger = require('./lib/logger');
-var churchill = require('churchill');
-var session = require('express-session');
-var redis = require('redis');
-var RedisStore = require('connect-redis-crypto')(session);
-var config = require('./config');
-var servestatic = require('serve-static');
+const express = require('express');
+const app = express();
+const path = require('path');
+const logger = require('./lib/logger');
+const churchill = require('churchill');
+const session = require('express-session');
+const redis = require('redis');
+const RedisStore = require('connect-redis-crypto')(session);
+const config = require('./config');
+const servestatic = require('serve-static');
 
 require('moment-business');
 
 if (config.env !== 'ci') {
   app.use(churchill(logger));
 }
-
 if (config.env === 'development' || config.env === 'so-ci' || config.env === 'ci-build') {
   app.use('/public', express.static(path.resolve(__dirname, './public')));
 }
@@ -30,14 +29,14 @@ app.use(function injectLocals(req, res, next) {
 
 app.set('view engine', 'html');
 
-var hofTemplate = require('hof').template;
+const hofTemplate = require('hmpo-govuk-template');
 hofTemplate.setup(app, {
   path: config.siteroot + '/govuk-assets'
 });
 
 app.use('/govuk-assets', servestatic(hofTemplate.assetPath));
 
-app.set('views', path.resolve(__dirname, './apps/common/views'));
+app.set('views', path.resolve(__dirname, './lib/views'));
 app.enable('view cache');
 app.use(require('express-partial-templates')(app));
 app.engine('html', require('hogan-express-strict'));
@@ -63,7 +62,7 @@ client.on('error', function clientErrorHandler(e) {
 });
 
 var redisStore = new RedisStore({
-  client: client,
+  client,
   ttl: config.session.ttl,
   secret: config.session.secret
 });
@@ -101,7 +100,7 @@ app.use(initSession);
 app.use(require('./apps/rtm/'));
 
 // errors
-app.use(require('./errors/'));
+app.use(require('./lib/errors/'));
 
 /*eslint camelcase: 0*/
 app.listen(config.port, config.listen_host);

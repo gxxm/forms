@@ -3,9 +3,9 @@
 var logger = require('../../lib/logger');
 var nodemailer = require('nodemailer');
 var config = require('../../config');
-var i18n = require('hof').i18n;
+var i18n = require('i18n-future');
 var Hogan = require('hogan.js');
-var i18nLookup = require('hof').i18nLookup;
+var i18nLookup = require('i18n-lookup');
 var fs = require('fs');
 var path = require('path');
 

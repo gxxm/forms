@@ -8,7 +8,7 @@ process.title = 'rtm';
 module.exports = {
   env: process.env.NODE_ENV || 'local',
   siteroot: process.env.SITEROOT || '',
-  port: process.env.PORT || 8080,
+  port: process.env.PORT || 3010,
   listen_host: process.env.LISTEN_HOST || '0.0.0.0',
   secureProtocol: process.env.SECURE_PROTOCOL || false,
   session: {
