@@ -6,7 +6,7 @@ const uuid = require('node-uuid');
 const i18n = require('i18n-future');
 
 const Controller = require('./rotm-base-controller');
-const Model = require('../../../services/email/Models/email');
+const Model = require('../../../so-forms/services/email/Models/email');
 
 module.exports = class Submit extends Controller {
   constructor(options) {
@@ -21,7 +21,7 @@ module.exports = class Submit extends Controller {
     }
 
     if (!data.length) {
-      this.options.template = path.resolve(__dirname, '../../lib/views/start-again.html');
+      this.options.template = path.resolve(__dirname, '../../../so-forms/views/start-again.html');
     } else {
       this.options.template = this.options.originalTemplate;
     }

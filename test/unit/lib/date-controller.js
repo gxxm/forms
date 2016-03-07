@@ -9,7 +9,7 @@ var proxyquire = require('proxyquire');
 var DateController = proxyquire('../../../lib/date-controller', {
   '../lib/base-controller': Controller
 });
-var ErrorClass = require('../../../lib/base-error');
+var ErrorClass = require('../../../lib/controllers/base-error');
 
 describe('lib/date-controller', function () {
 

@@ -1,6 +1,6 @@
 'use strict';
 
-const Controller = require('base-controller');
+const Controller = require('./base-controller');
 
 module.exports = class StartController extends Controller {
 

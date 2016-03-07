@@ -20,5 +20,3 @@ module.exports = class EmailModel extends Model {
     }, callback);
   }
 };
-
-

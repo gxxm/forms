@@ -2,7 +2,7 @@
 
 const _ = require('lodash');
 
-const Controller = require('../../../lib/ajax-controller');
+const Controller = require('../../../so-forms').controllers.edjax;
 
 let reportToRemove;
 

@@ -1,6 +1,6 @@
 'use strict';
 
-const Controller = require('../../../lib/ajax-edit-controller');
+const Controller = require('../../../so-forms').controllers.edjax;
 
 module.exports = class Reset extends Controller {
 

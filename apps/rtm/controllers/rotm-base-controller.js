@@ -1,7 +1,7 @@
 'use strict';
 
-const _ = require('underscore');
-const BaseController = require('../../../lib/base-controller');
+const _ = require('lodash');
+const BaseController = require('../../../so-forms').controllers.base;
 
 module.exports = class Controller extends BaseController {
 
@@ -10,7 +10,7 @@ module.exports = class Controller extends BaseController {
   }
 
   getReports(req) {
-    const sessionData = _.pick(req.sessionModel.toJSON(), _.identity);
+    const sessionData = _.pickBy(req.sessionModel.toJSON(), _.identity);
     let data = sessionData.report || [];
     return data;
   }

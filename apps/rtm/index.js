@@ -17,7 +17,7 @@ router.use(mixins(fields, {
 }));
 
 router.use('/report-terrorism/', wizard(require('./steps'), fields, {
-  controller: require('../../lib/base-controller'),
+  controller: require('../../so-forms').controllers.base,
   templatePath: path.resolve(__dirname, 'views'),
   translate: i18n.translate.bind(i18n),
   params: '/:action?'

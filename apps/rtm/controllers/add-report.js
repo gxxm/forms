@@ -1,6 +1,6 @@
 'use strict';
 
-const Controller = require('../../../lib/base-controller');
+const Controller = require('../../../so-forms').controllers.base;
 
 module.exports = class AddReportController extends Controller {
 

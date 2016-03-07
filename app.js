@@ -3,7 +3,7 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const logger = require('./lib/logger');
+const logger = require('./so-forms').logger;
 const churchill = require('churchill');
 const session = require('express-session');
 const redis = require('redis');
@@ -12,6 +12,8 @@ const config = require('./config');
 const servestatic = require('serve-static');
 
 require('moment-business');
+
+global.__base = path.join(__dirname, '/');
 
 if (config.env !== 'ci') {
   app.use(churchill(logger));
@@ -36,7 +38,7 @@ hofTemplate.setup(app, {
 
 app.use('/govuk-assets', servestatic(hofTemplate.assetPath));
 
-app.set('views', path.resolve(__dirname, './lib/views'));
+app.set('views', path.resolve(__dirname, './so-forms/views'));
 app.enable('view cache');
 app.use(require('express-partial-templates')(app));
 app.engine('html', require('hogan-express-strict'));
@@ -100,7 +102,7 @@ app.use(initSession);
 app.use(require('./apps/rtm/'));
 
 // errors
-app.use(require('./lib/errors/'));
+app.use(require('./so-forms').errors);
 
 /*eslint camelcase: 0*/
 app.listen(config.port, config.listen_host);

@@ -1,7 +1,7 @@
 'use strict';
 
 const winston = require('winston');
-const config = require('../config');
+const config = require('../../config');
 const loggingTransports = [];
 const exceptionTransports = [];
 const notProd = (config.env === 'development' || config.env === 'ci');
